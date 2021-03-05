@@ -2,6 +2,7 @@ package com.sonar.vishal.logic;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
+import java.net.URLDecoder;
 import java.util.List;
 
 import com.sonar.vishal.pojo.Config;
@@ -24,7 +25,11 @@ public class JvmArg {
 			if (argument.contains(Constant.CONFIG_PATH_TOKEN)) {
 				splitString = argument.split(Constant.CONFIG_PATH_TOKEN);
 				if (splitString.length >= 1) {
-					config.setConfigFilePath(splitString[1]);
+					try {
+						config.setConfigFilePath(URLDecoder.decode(splitString[1], Constant.UTF));
+					} catch (Exception e) {
+						config.setConfigFilePath(splitString[1]);
+					}
 				}
 			}
 			if (argument.contains(Constant.SECRET)) {

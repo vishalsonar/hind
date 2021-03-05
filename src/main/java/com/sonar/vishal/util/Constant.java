@@ -36,6 +36,7 @@ public class Constant {
 
 	public static final String DATE_TIME_FORMAT = "ddMMyyyyHHmmss";
 	public static final String GENERIC_RESPONSE = "unable to process request";
+	public static final String UTF = "UTF-8";
 	
 	public static final Config CONFIG = new JvmArg().read();
 	public static final Mapping MAP_LOGIC = new Mapping();
