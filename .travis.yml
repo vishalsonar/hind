@@ -12,8 +12,8 @@ addons:
  sonarcloud:
   organization: "vishalsonar"
 before_script:
- - touch /home/hind.json
- - chmod +x /home/hind.json
+ - sudo touch /home/hind.json
+ - sudo chmod +x /home/hind.json
 script: mvn clean install sonar:sonar -Dsonar.projectKey=vishalsonar_hind -DskipTests=false -Dmaven.javadoc.skip=true -B -V
 notification:
  email: vsonar908@gmail.com
