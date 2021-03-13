@@ -5,6 +5,12 @@ env:
   - SONAR_TOKEN=99450b20c9fee3d54e02b007eb6f2729772048b5
 jdk:
  - openjdk11
+matrix:
+ include:
+  - jdk: openjdk11
+ before_install:
+  - rm "${JAVA_HOME}/lib/security/cacerts"
+  - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
 cache:
  directories:
   - $HOME/.m2/
@@ -15,7 +21,6 @@ before_script:
  - sudo touch /home/hind.json
  - sudo chmod 777 /home/hind.json
  - sudo echo $json >> /home/hind.json
- - sudo echo "$(dig +short myip.opendns.com @resolver1.opendns.com)"
 script: mvn clean install sonar:sonar -Dsonar.projectKey=vishalsonar_hind -DskipTests=false -Dmaven.javadoc.skip=true -B -V
 notification:
  email: vsonar908@gmail.com
