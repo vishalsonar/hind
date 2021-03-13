@@ -12,7 +12,7 @@ addons:
  sonarcloud:
   organization: "vishalsonar"
 before_script:
- echo'{ "config": [ { "database": "sample_weatherdata", "collections": ["data", "data1"] }, { "database": "test", "collections": ["data"] } ] }' >> /home/hind.json
+ - echo'{ "config": [ { "database": "sample_weatherdata", "collections": ["data", "data1"] }, { "database": "test", "collections": ["data"] } ] }' >> /home/hind.json
 script: mvn clean install sonar:sonar -Dsonar.projectKey=vishalsonar_hind -DskipTests=false -Dmaven.javadoc.skip=true -B -V
 notification:
  email: vsonar908@gmail.com
