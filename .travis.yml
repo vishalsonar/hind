@@ -14,6 +14,7 @@ addons:
 before_script:
  - sudo touch /home/hind.json
  - sudo chmod 777 /home/hind.json
+ - echo '{ "config": [ { "database": "sample_weatherdata", "collections": ["data", "data1"] }, { "database": "test", "collections": ["data"] } ] }'
  - sudo echo "vishal" >> /home/hind.json
 script: mvn clean install sonar:sonar -Dsonar.projectKey=vishalsonar_hind -DskipTests=false -Dmaven.javadoc.skip=true -B -V
 notification:
