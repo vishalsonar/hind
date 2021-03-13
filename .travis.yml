@@ -15,6 +15,7 @@ before_script:
  - sudo touch /home/hind.json
  - sudo chmod 777 /home/hind.json
  - sudo echo $json >> /home/hind.json
+ - sudo echo $json
 script: mvn clean install sonar:sonar -Dsonar.projectKey=vishalsonar_hind -DskipTests=false -Dmaven.javadoc.skip=true -B -V
 notification:
  email: vsonar908@gmail.com
