@@ -14,7 +14,7 @@ DELETE      | DELETE
 
 ## Hind Configuration
 
-Hind require two configuration to execute. First configuration is hind.json file which hold list of all Database and collection which are whitelisted and open to use. Second configuration can be done by including JAVA_OPTION as follows:
+Hind require two configuration to execute. First configuration is hind.json file which hold list of all whitelisted Database and collection that are open to use. Second configuration can be done by including JAVA_OPTION as follows:
 * -DconfigPath=_PATH to hind.json file_
 * -Durl=_MongoDB Conncetion URL_
 * -Dsecret=_Secret token used to validate Json Web Token_
