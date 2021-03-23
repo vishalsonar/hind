@@ -3,7 +3,7 @@
 
 Hind is a Java application which expose api to perform CRUD operation in MongoDB. Hind provide flexibility to switch Database and Collection just by changing host path, Host path format: `<URL>/database/collection`. Validation of URL i.e. Database and Collection can be configured in hind.json. Hind make use of Json Web Token instead of normal string query to query selection of document.
 
-## HTTP Method to CRUD Action
+## HTTP Method mapping to CRUD Action
 
 HTTP Method | CRUD Action 
 ------------|------------ 
