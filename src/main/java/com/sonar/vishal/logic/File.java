@@ -11,8 +11,7 @@ public class File {
 
 	public String read(String path) {
 		StringBuilder builder = new StringBuilder();
-		try {
-			Scanner sc = new Scanner(new java.io.File(path));
+		try (Scanner sc = new Scanner(new java.io.File(path))) {
 			while (sc.hasNextLine()) {
 				builder.append(sc.nextLine());
 			}
