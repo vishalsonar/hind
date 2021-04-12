@@ -9,6 +9,7 @@ import org.junit.runners.JUnit4;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.sonar.vishal.data.TestData;
+import com.sonar.vishal.logic.HindLogic;
 import com.sonar.vishal.pojo.Data;
 import com.sonar.vishal.service.DELETEService;
 import com.sonar.vishal.service.GETService;
@@ -91,6 +92,12 @@ public class TestService {
 		data = new Data(TestData.dataBaseName, TestData.collection, TestData.json);
 		service = new GETService(data);
 		response = service.doService();
+		responseCode = response.getAsJsonObject().get(Constant.RESPONSE_CODE_STRING).getAsString();
+		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
+
+		HindLogic hindLogic = new HindLogic();
+		String stringResponse = hindLogic.getProcessedResponse(service);
+		response = hindLogic.toJsonObject(stringResponse);
 		responseCode = response.getAsJsonObject().get(Constant.RESPONSE_CODE_STRING).getAsString();
 		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
 	}

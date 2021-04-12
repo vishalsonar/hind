@@ -46,7 +46,7 @@ public class HindLogic {
 		JsonObject queryObject = null;
 		query = new Security().getQuery(query);
 		if (!Security.EMPTY.equals(query)) {
-			queryObject = JsonParser.parseString(query).getAsJsonObject();
+			queryObject = toJsonObject(query);
 		}
 		return queryObject;
 	}
