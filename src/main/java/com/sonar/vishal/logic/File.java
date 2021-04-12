@@ -10,19 +10,14 @@ import com.sonar.vishal.util.Constant;
 public class File {
 
 	public String read(String path) {
-		Scanner sc = null;
 		StringBuilder builder = new StringBuilder();
 		try {
-			java.io.File file = new java.io.File(path);
-			sc = new Scanner(file);
+			Scanner sc = new Scanner(new java.io.File(path));
 			while (sc.hasNextLine()) {
 				builder.append(sc.nextLine());
 			}
 		} catch (Exception e) {
 			// Do Nothing.
-		} finally {
-			if (sc != null)
-				sc.close();
 		}
 		return builder.toString();
 	}
