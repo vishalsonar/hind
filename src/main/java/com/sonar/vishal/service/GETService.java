@@ -26,8 +26,8 @@ public class GETService extends Service {
 			MongoCursor<Document> documentCursor = dataCollection.find(document).iterator();
 			while (documentCursor.hasNext()) {
 				element = JsonParser.parseString(documentCursor.next().toJson()).getAsJsonObject();
-				idObj = element.getAsJsonObject().get(Constant._ID).getAsJsonObject();
-				element.addProperty(Constant._ID, idObj.get(Constant.OBJECT_ID).getAsString());
+				idObj = element.getAsJsonObject().get(Constant.ID).getAsJsonObject();
+				element.addProperty(Constant.ID, idObj.get(Constant.OBJECT_ID).getAsString());
 				documentArray.add(element);
 			}
 			json = successResponse();

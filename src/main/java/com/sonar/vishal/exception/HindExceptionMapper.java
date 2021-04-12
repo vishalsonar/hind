@@ -5,7 +5,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 
 import com.sonar.vishal.logic.HindLogic;
 
-public class HindException implements ExceptionMapper<Throwable> {
+public class HindExceptionMapper implements ExceptionMapper<Throwable> {
 
 	@Override
 	public Response toResponse(Throwable exception) {

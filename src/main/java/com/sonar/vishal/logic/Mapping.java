@@ -10,20 +10,20 @@ import com.sonar.vishal.util.Constant;
 
 public class Mapping {
 
-	private Map<String, String> mapping;
+	private Map<String, String> table;
 
 	public Mapping() {
 		String databaseName = null;
 		String collections = null;
-		mapping = new HashMap<String, String>();
+		table = new HashMap<>();
 		JsonArray array = new File().readConfig(Constant.CONFIG.getConfigFilePath());
 		for (JsonElement element : array) {
 			try {
 				JsonObject innerObject = element.getAsJsonObject();
 				databaseName = innerObject.get(Constant.DATABASE_STRING).getAsString();
 				collections = innerObject.get(Constant.COLLECTIONS_STRING).getAsJsonArray().toString();
-				collections = collections.split("\\[")[1].split("\\]")[0];
-				mapping.put(databaseName, collections);
+				collections = collections.split(Constant.OPENING_BRACKET)[1].split(Constant.CLOSING_BRAKET)[0];
+				table.put(databaseName, collections);
 			} catch (Exception e) {
 				// Do Nothing.
 			}
@@ -32,11 +32,11 @@ public class Mapping {
 
 	public boolean isPresent(String databaseName, String collectionName) {
 		boolean state = false;
-		if (mapping.containsKey(databaseName)) {
-			String arrayCollection = mapping.get(databaseName);
-			String[] array = arrayCollection.split(",");
+		if (table.containsKey(databaseName)) {
+			String arrayCollection = table.get(databaseName);
+			String[] array = arrayCollection.split(Constant.COMMA);
 			for (String unit : array) {
-				unit = unit.replaceAll("\"", "");
+				unit = unit.replaceAll(Constant.BACK_SLASH_REGEX, Constant.EMPTY);
 				if (collectionName.equals(unit)) {
 					state = true;
 					break;

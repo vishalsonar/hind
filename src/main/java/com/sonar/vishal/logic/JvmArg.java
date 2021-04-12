@@ -10,35 +10,52 @@ import com.sonar.vishal.util.Constant;
 
 public class JvmArg {
 
+	private Config config;
+	private String[] splitString;
+
+	public JvmArg() {
+		config = new Config();
+	}
+
 	public Config read() {
-		Config config = new Config();
 		RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean();
 		List<String> arguments = runtimeMxBean.getInputArguments();
-		String[] splitString = null;
 		for (String argument : arguments) {
 			if (argument.contains(Constant.URL_TOKEN)) {
-				splitString = argument.split(Constant.URL_TOKEN);
-				if (splitString.length >= 1) {
-					config.setConnectionUrl(splitString[1]);
-				}
+				loadURLToken(argument);
 			}
 			if (argument.contains(Constant.CONFIG_PATH_TOKEN)) {
-				splitString = argument.split(Constant.CONFIG_PATH_TOKEN);
-				if (splitString.length >= 1) {
-					try {
-						config.setConfigFilePath(URLDecoder.decode(splitString[1], Constant.UTF));
-					} catch (Exception e) {
-						config.setConfigFilePath(splitString[1]);
-					}
-				}
+				loadPathToken(argument);
 			}
 			if (argument.contains(Constant.SECRET)) {
-				splitString = argument.split(Constant.SECRET);
-				if (splitString.length >= 1) {
-					config.setSecret(splitString[1]);
-				}
+				loadSecretToken(argument);
 			}
 		}
 		return config;
+	}
+
+	private void loadSecretToken(String argument) {
+		splitString = argument.split(Constant.SECRET);
+		if (splitString.length >= 1) {
+			config.setSecret(splitString[1]);
+		}
+	}
+
+	private void loadPathToken(String argument) {
+		splitString = argument.split(Constant.CONFIG_PATH_TOKEN);
+		if (splitString.length >= 1) {
+			try {
+				config.setConfigFilePath(URLDecoder.decode(splitString[1], Constant.UTF));
+			} catch (Exception e) {
+				config.setConfigFilePath(splitString[1]);
+			}
+		}
+	}
+
+	private void loadURLToken(String argument) {
+		splitString = argument.split(Constant.URL_TOKEN);
+		if (splitString.length >= 1) {
+			config.setConnectionUrl(splitString[1]);
+		}
 	}
 }

@@ -19,14 +19,14 @@ public class TestData {
 
 	public static JsonObject updateJson(String id) {
 		JsonObject json = new JsonObject();
-		json.addProperty(Constant._ID, id);
+		json.addProperty(Constant.ID, id);
 		json.addProperty("test", new Random().nextDouble());
 		return json;
 	}
 
 	public static JsonObject deleteJson(String id) {
 		JsonObject json = new JsonObject();
-		json.addProperty(Constant._ID, id);
+		json.addProperty(Constant.ID, id);
 		json.addProperty("test", "value");
 		return json;
 	}

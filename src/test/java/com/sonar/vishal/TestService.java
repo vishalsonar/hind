@@ -61,20 +61,20 @@ public class TestService {
 		service = new PUTService(data);
 		JsonObject response = service.doService().getAsJsonObject();
 		String responseCode = response.get(Constant.RESPONSE_CODE_STRING).getAsString();
-		String id = response.get(Constant._ID).getAsString();
-		assertEquals(responseCode, Constant.SUCCESS_RESPONSE_CODE);
+		String id = response.get(Constant.ID).getAsString();
+		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
 
 		data = new Data(TestData.dataBaseName, TestData.collection, TestData.updateJson(id));
 		service = new POSTService(data);
 		response = service.doService().getAsJsonObject();
 		responseCode = response.getAsJsonObject().get(Constant.RESPONSE_CODE_STRING).getAsString();
-		assertEquals(responseCode, Constant.SUCCESS_RESPONSE_CODE);
+		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
 
 		data = new Data(TestData.dataBaseName, TestData.collection, TestData.deleteJson(id));
 		service = new DELETEService(data);
 		response = service.doService().getAsJsonObject();
 		responseCode = response.getAsJsonObject().get(Constant.RESPONSE_CODE_STRING).getAsString();
-		assertEquals(responseCode, Constant.SUCCESS_RESPONSE_CODE);
+		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
 	}
 
 	/**
@@ -86,12 +86,12 @@ public class TestService {
 		service = new GETService(data);
 		JsonElement response = service.doService();
 		String responseCode = response.getAsJsonObject().get(Constant.RESPONSE_CODE_STRING).getAsString();
-		assertEquals(responseCode, Constant.SUCCESS_RESPONSE_CODE);
+		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
 
 		data = new Data(TestData.dataBaseName, TestData.collection, TestData.json);
 		service = new GETService(data);
 		response = service.doService();
 		responseCode = response.getAsJsonObject().get(Constant.RESPONSE_CODE_STRING).getAsString();
-		assertEquals(responseCode, Constant.SUCCESS_RESPONSE_CODE);
+		assertEquals(Constant.SUCCESS_RESPONSE_CODE, responseCode);
 	}
 }

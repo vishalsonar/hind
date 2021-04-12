@@ -10,7 +10,17 @@ import com.sonar.vishal.logic.Mapping;
 import com.sonar.vishal.pojo.Config;
 
 public class Constant {
+	
+	private Constant() {
+		// hide public constructor. 
+	}
 
+	public static final String OPENING_BRACKET = "\\[";
+	public static final String CLOSING_BRAKET = "\\]";
+	public static final String COMMA = ",";
+	public static final String BACK_SLASH_REGEX = "\"";
+	public static final String EMPTY = "";
+	
 	public static final String URL_TOKEN = "-Durl=";
 	public static final String CONFIG_PATH_TOKEN = "-DconfigPath=";
 	public static final String SECRET = "-Dsecret=";
@@ -30,7 +40,7 @@ public class Constant {
 	public static final String DELETE_COUNT = "DeleteCount";
 	
 	public static final String OBJECT_ID = "$oid";
-	public static final String _ID = "_id";
+	public static final String ID = "_id";
 	public static final String DOCUMENT = "Document";
 	public static final String DATE_TIME_STRING = "DateTime";
 

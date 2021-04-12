@@ -11,12 +11,12 @@ public class File {
 
 	public String read(String path) {
 		Scanner sc = null;
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		try {
 			java.io.File file = new java.io.File(path);
 			sc = new Scanner(file);
 			while (sc.hasNextLine()) {
-				buffer.append(sc.nextLine());
+				builder.append(sc.nextLine());
 			}
 		} catch (Exception e) {
 			// Do Nothing.
@@ -24,7 +24,7 @@ public class File {
 			if (sc != null)
 				sc.close();
 		}
-		return buffer.toString();
+		return builder.toString();
 	}
 
 	public JsonArray readConfig(String path) {

@@ -23,7 +23,7 @@ public class DELETEService extends Service {
 		try {
 			session = Constant.MONGO_CLIENT.startSession();
 			session.startTransaction(Constant.TRANSACTION_OPTION);
-			DeleteResult result = dataCollection.deleteOne(Filters.eq(Constant._ID, new ObjectId(id)));
+			DeleteResult result = dataCollection.deleteOne(Filters.eq(Constant.ID, new ObjectId(id)));
 			session.commitTransaction();
 			json = successDeleteResponse(result);
 		} catch (Exception e) {

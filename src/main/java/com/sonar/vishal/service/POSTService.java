@@ -25,7 +25,7 @@ public class POSTService extends Service {
 		try {
 			session = Constant.MONGO_CLIENT.startSession();
 			session.startTransaction(Constant.TRANSACTION_OPTION);
-			Bson filter = Filters.eq(Constant._ID, new ObjectId(id));
+			Bson filter = Filters.eq(Constant.ID, new ObjectId(id));
 			UpdateResult result = dataCollection.replaceOne(filter, document, Constant.UPDATE_POLICY);
 			session.commitTransaction();
 			json = successPostResponse(result);

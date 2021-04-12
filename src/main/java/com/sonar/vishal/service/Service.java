@@ -26,10 +26,10 @@ public abstract class Service {
 		MongoDatabase database = Constant.MONGO_CLIENT.getDatabase(data.getDatabaseName());
 		dataCollection = database.getCollection(data.getCollectionName());
 		JsonObject dataObject = data.getDataParameter().getAsJsonObject();
-		if (dataObject.get(Constant._ID) != null) {
-			id = dataObject.get(Constant._ID).getAsString();
-			dataObject.remove(Constant._ID);
-			document = new Document(Constant._ID, new ObjectId(id));
+		if (dataObject.get(Constant.ID) != null) {
+			id = dataObject.get(Constant.ID).getAsString();
+			dataObject.remove(Constant.ID);
+			document = new Document(Constant.ID, new ObjectId(id));
 			document.putAll(Document.parse(data.getDataParameter().toString()));
 		} else {
 			document = Document.parse(dataObject.toString());
