@@ -12,7 +12,7 @@ PUT         | INSERT
 POST        | UPDATE
 DELETE      | DELETE
 
-## Hind Configuration
+## Configuration
 
 Hind require two mandatory configuration to execute. First configuration is hind.json file which hold list of all whitelisted Database and collection. Second configuration is realted to JAVA_OPTION which provide basic context as follows:
 * -DconfigPath=_PATH to hind.json file_
@@ -32,9 +32,9 @@ Hind require two mandatory configuration to execute. First configuration is hind
 }
 ```
 
-## Hind API
+## API
 
-
+## JWT Get Query Generation
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
