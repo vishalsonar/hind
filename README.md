@@ -10,7 +10,7 @@
 
 Hind is a Java application which expose api to perform CRUD operation in MongoDB. Hind provide flexibility to switch between Database and Collection just by changing host path given Host path format: `<URL>/database/collection`. Validation of URL i.e. Database and Collection is to be configured in hind.json. Hind make use of Json Web Token to query collection instead of normal query string. Currently hind is develop and tested with Mongodb Atlas Database with all servlet request map to `/hind/*`.
 
-## HTTP Method mapping to CRUD Action
+#### HTTP Method mapping to CRUD Action
 
 HTTP Method | CRUD Action 
 ------------|------------ 
@@ -19,14 +19,14 @@ PUT         | INSERT
 POST        | UPDATE
 DELETE      | DELETE
 
-## Configuration
+#### Configuration
 
 Hind require two mandatory configuration to execute. First configuration is hind.json file which hold list of all whitelisted Database and collection. Second configuration is related to JAVA_OPTION which provide basic application context as follows:
 * -DconfigPath=_PATH to hind.json file e.g. `C:\..\..\hind.json`_
 * -Durl=_MongoDB Connection URL e.g. `mongodb+srv://<username>:<password>@cluster0.tarir.mongodb.net/?retryWrites=true`_
 * -Dsecret=_Secret token for HmacSHA512 algorithm used to validate Json Web Token e.g. `token`_
 
-## Hind.json Format
+#### Hind.json Format
 
  ```json
  {
@@ -39,9 +39,9 @@ Hind require two mandatory configuration to execute. First configuration is hind
 }
 ```
 
-## API
+#### API
 
-## JWT Get Query Generation
+#### JWT Get Query Generation
 
-## License
+#### License
 Distributed under the MIT License. See `LICENSE` for more information.
