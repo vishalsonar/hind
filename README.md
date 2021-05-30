@@ -78,11 +78,11 @@ https://someurl/databasename/collectionname?query=jwtString_version_of_mongodb_q
 Following Java snippet generate JWT token from native mongoDB query object.
 ```java
 com.auth0.jwt.JWT.create()
-                 .withIssuer("hind")
-                 .withSubject("hind-query")
-                 .withIssuedAt(new Date())
-                 .withClaim("query", "native mongoDB query object as string")
-                 .sign(com.auth0.jwt.algorithms.Algorithm.HMAC512("replace with JAVA_OPTION -Dsecret value"));
+             .withIssuer("hind")
+             .withSubject("hind-query")
+             .withIssuedAt(new Date())
+             .withClaim("query", "native mongoDB query object as string")
+             .sign(com.auth0.jwt.algorithms.Algorithm.HMAC512("replace with JAVA_OPTION -Dsecret value"));
 ```
 
 #### License
