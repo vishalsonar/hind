@@ -69,14 +69,21 @@ To delete data from database, Set HTTP request method to `DELETE` in header with
 }
 ```
 ##### GET (_is to select_)
-To select data from database, Set HTTP request method to `GET` in header with query parameter as `query` containing JWT string of mongodb query object. Mongodb query object is same as mongodb JSON query object which is used to fetch data. example:
+To select data from database, Set HTTP request method to `GET` in header with query parameter as `query` containing JWT string of mongodb query object. Mongodb query object is same as default mongodb JSON query object which is used in native mongodb console to fetch data. example:
 ```
 https://someurl/databasename/collectionname?query=jwtString_version_of_mongodb_query_object
 ```
 
 #### JWT Get Query Generation
-
-
+Following Java snippet generate JWT token from native mongoDB query object.
+```java
+   com.auth0.jwt.JWT.create()
+                    .withIssuer("hind")
+                    .withSubject("hind-query")
+                    .withIssuedAt(new Date())
+                    .withClaim("query", "native mongoDB query object as string")
+                    .sign(com.auth0.jwt.algorithms.Algorithm.HMAC512("replace this with JAVA_OPTION -Dsecret value"));
+```
 
 #### License
 Distributed under the MIT License. See `LICENSE` for more information.
