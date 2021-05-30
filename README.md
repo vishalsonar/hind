@@ -41,7 +41,42 @@ Hind require two mandatory configuration to execute. First configuration is hind
 
 #### API
 
+##### PUT (_is to insert_)
+To insert data into database, Set HTTP request method to `PUT` in header with request body containing JSON data which needs to be inserted. JSON data must have unique identifier holded by key `_id`. example:
+```json
+{
+    "_id": "12345",
+    "key": "data",
+    "key1": "data1",
+    "key2": "some object"
+}
+```
+##### POST (_is to update_)
+To update data in database, Set HTTP request method to `POST` in header with request body containing JSON data which needs to be updated. JSON data must have unique identifier `_id` for which data needs to be updated. example:
+```json
+{
+    "_id": "12345",
+    "key": "updated_data",
+    "key1": "updated_data1",
+    "key2": "some object"
+}
+```
+##### DELETE (_is to delete_)
+To delete data from database, Set HTTP request method to `DELETE` in header with request body containing JSON data with only unique identifier. example:
+```json
+{
+    "_id": "12345"
+}
+```
+##### GET (_is to select_)
+To select data from database, Set HTTP request method to `GET` in header with query parameter as `query` containing JWT string of mongodb query object. Mongodb query object is same as mongodb JSON query object which is used to fetch data. example:
+```
+https://someurl/databasename/collectionname?query=jwtString_version_of_mongodb_query_object
+```
+
 #### JWT Get Query Generation
+
+
 
 #### License
 Distributed under the MIT License. See `LICENSE` for more information.
